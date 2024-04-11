@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request,render_template
 
 app = Flask(__name__)
 
@@ -7,6 +7,12 @@ tasks = []
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
     return jsonify({'tasks': tasks})
+    
+
+@app.route('/', methods=['GET'])
+def get_task():
+    return render_template('index.html')
+   
 
 @app.route('/tasks', methods=['POST'])
 def add_task():
